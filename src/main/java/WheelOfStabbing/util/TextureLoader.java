@@ -24,7 +24,7 @@ public class TextureLoader {
      * @return <b>com.badlogic.gdx.graphics.Texture</b> - The texture from the path provided
      */
     public static Texture getTexture(final String textureString) {
-        if (textures.get(textureString) == null) {
+        if (textures.get(textureString) == null || textures.get(textureString).getTextureObjectHandle() == 0) {
             try {
                 loadTexture(textureString);
             } catch (GdxRuntimeException e) {
@@ -43,7 +43,7 @@ public class TextureLoader {
      * @throws GdxRuntimeException
      */
     private static void loadTexture(final String textureString) throws GdxRuntimeException {
-        logger.info("Yes/No | Loading Texture: " + textureString);
+        logger.info("WoS | Loading Texture: " + textureString);
         Texture texture = new Texture(textureString);
         texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
         textures.put(textureString, texture);
